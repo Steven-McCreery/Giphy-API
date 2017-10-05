@@ -10,6 +10,7 @@
 
 	<!-- linking to the jQuery CDN and JavaScript file -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/dropdown.js"></script>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,14 +22,15 @@
 		
 		<div class="row">
 			<div class="column col col-xs-12" id="title">
-				<h1><strong>Title</strong></h1>
+				<h1><strong>Fun With Clicks:</strong></h1>
+				<h2>Buttons that Add Buttons and Images that are Buttons</h2>
 				<br>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="column col col-xs-12" id="results">
-				<span class="buttons">buttons here</span>
+				<div class="buttons">buttons here</div>
 				<br>
 				<br>
 				<br>
@@ -37,14 +39,48 @@
 
 		<div class="row">
 
-			<div class="column col col-xs-3 pull-right">
-				<input id="textToSearch" type="text" placeholder="Creative Juices Flow!">
-				<br>
-				<button class="button btn-primary btn-lg" id="submit">Add Button!</button>
+			<div class="column col col-xs-4 pull-right text-left">
+				<div class="panel panel-primary">
+
+					<div class="panel-heading">
+						<h3 class="panel-title">Topic Selection and User Customization</h3>
+					</div>
+
+					<div class="panel-body">
+						<div class="btn-group dropdown">
+							<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Topic Selection <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation"><a role="menuitem" href="#">an array</a></li>
+								<li><a <li role="presentation"><a role="menuitem" href="#">another array</a></li>
+								<li role="presentation"><a role="menuitem" href="#">yet another array</a></li>
+								<li role="separator" class="divider"></li>
+								<li role="presentation"><a role="menuitem" href="#">you can add your own custom topic in the input area below, you will also need to add buttons</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="panel-body">
+						<strong>Wanna add a button?</strong>
+						<br>
+						<input id="textToSearch" type="text" placeholder="New Button Text!">
+						<br>
+						<button class="button btn-primary btn-lg" id="button">Add Button!</button>
+					</div>
+
+					<div class="panel-body">
+						<strong>Wanna add a topic?</strong>
+						<br>
+						<input id="textToSearch" type="text" placeholder="New Topic Text!">
+						<br>
+						<button class="button btn-primary btn-lg" id="topic">Add Topic!</button>
+					</div>
+				</div>
 			</div>
 				
-			<div class="column col col-xs-9 pull-left" id="gifs">
-				<span class="images">images here</span>
+			<div class="column col col-xs-8 pull-left" id="gifs">
+				<div class="images">images here</div>
 			</div>
 
 		</div>
@@ -52,5 +88,9 @@
 		<div class="row">
 		</div>
 	
+
+
+
+
 </body>
 </html>
