@@ -9,7 +9,6 @@ $(document).ready(function() {
 
 
 	$(".buttons").on("click", "button", function(){
-		event.preventDefault();
 		getImages();
 	})
 
@@ -20,7 +19,7 @@ $(document).ready(function() {
 	})
 
 	// array for image getting and button drawing
-	var tvShows = ["I'ts Always Sunny in Philadelphia", "Simpsons", "30 Rock", "Family Guy", "House of Cards", "Better Off Ted", "Monty Python", "The Blacklist"];
+	var tvShows = ["I'ts Always Sunny in Philadelphia", "Simpsons", "30 Rock", "Game of Thrones", "House of Cards", "Better Off Ted", "Monty Python", "The Blacklist"];
 
 	console.log(tvShows);
 
@@ -49,6 +48,7 @@ $(document).ready(function() {
 			// creates blank jQuery button then adds text to button 
 			var b = $("<button>");
 			b.text(tvShows[i]);	
+			b.attr("data", tvShows[i]);	
 			b.addClass("tvShow button btn-success");		
 			$(".buttons").append(b);
 			console.log(b[0].textContent);
@@ -64,7 +64,7 @@ $(document).ready(function() {
 		$(".images").empty();
 
 		// setting button text as a variable
-		var show = $(this)[0].textContent;
+		var show = $(event.target).text();
 		console.log(show);
 
 		// set URL for Giphly site
@@ -82,9 +82,9 @@ $(document).ready(function() {
 				var image = $("<img>").attr("src", response.data[j].images.fixed_height_still.url);
 				var ratingText = $("<p>").text("Rating: " + response.data[j].rating);
 
-				$(".images").prepend(area);
 				area.append(image);
-				image.append(ratingText);
+				area.append(ratingText);
+				$(".images").prepend(area);
 			}
 		})
 
