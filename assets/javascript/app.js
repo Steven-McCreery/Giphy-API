@@ -5,16 +5,19 @@ $("#button").on("click", function(){
 	newButton();
 })
 
+$(".buttons").on("click", function(){
+	event.preventDefault();
+	getImages();
+})
+
 $("img").on("click", function(){
 	event.preventDefault();
-	newButton();
+	animateToggle();
 })
 
 
 
-
-var tvShows = [ {currentTopic: false}, {items: ["Simpsons", "Family Guy", "30 Rock", "Better Off Ted"]}];
-
+var tvShows = ["I'ts Always Sunny in Philadelphia", "Simpsons", "30 Rock", "Family Guy", "House of Cards", "Better Off Ted", "Monty Python", "The Blacklist"];
 
 console.log(tvShows);
 
