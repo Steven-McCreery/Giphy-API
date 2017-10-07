@@ -8,7 +8,7 @@ $(document).ready(function() {
 	})
 
 
-	$(".buttons").on("click", "img", function(){
+	$(".buttons").on("click", "button", function(){
 		event.preventDefault();
 		getImages();
 	})
@@ -49,8 +49,9 @@ $(document).ready(function() {
 			// creates blank jQuery button then adds text to button 
 			var b = $("<button>");
 			b.text(tvShows[i]);	
-			b.addClass("tvShow");		
+			b.addClass("tvShow button btn-success");		
 			$(".buttons").append(b);
+			console.log(b[0].textContent);
 		}
 	}
 
@@ -59,8 +60,33 @@ $(document).ready(function() {
 
 	getImages = function() {
 
+		// clear image area for new items
+		$(".images").empty();
+
+		// setting button text as a variable
+		var show = $(this)[0].textContent;
+		console.log(show);
+
 		// set URL for Giphly site
-		var queryURL;
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + show + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+		// make the axaj call
+		$.ajax({
+			url: queryURL,
+			method: "GET"
+		}).done(function(response) {
+			console.log(response);
+
+			for (var j = 0; j < response.data.length; j++) {
+				var area = $("<div id='gif'>")
+				var image = $("<img>").attr("src", response.data[j].images.fixed_height_still.url);
+				var ratingText = $("<p>").text("Rating: " + response.data[j].rating);
+
+				$(".images").prepend(area);
+				area.append(image);
+				image.append(ratingText);
+			}
+		})
 
 
 	}
