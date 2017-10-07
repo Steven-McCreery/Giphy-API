@@ -5,27 +5,16 @@ $("#button").on("click", function(){
 	newButton();
 })
 
-$("#topic").on("click", function(){
+$("img").on("click", function(){
 	event.preventDefault();
-	newTopic();
+	newButton();
 })
 
-// var topics = [
-// 	{topic1: "topic",
-// 	subtopic1: "subtopic",
-// 	subtopic2: {sub21 : "subsub1",
-// 		sub22: "subsub2"},
-// 	},
-// 	{topic2: "topic2",
-// 	subtopic1: "subtopic",
-// 	subtopic2: {sub21 : {subsubsub1: "subsub1",
-// 				subsubsub2: "subsub2"},
-// 		sub22: "subsub2"},
-// 	},
-// ]
 
 
-var tvShows = [	"Simpsons", "Family Guy", "30 Rock", "Better Off Ted"]
+
+var tvShows = [ {currentTopic: false}, {items: ["Simpsons", "Family Guy", "30 Rock", "Better Off Ted"]}];
+
 
 console.log(tvShows);
 
@@ -33,19 +22,22 @@ console.log(tvShows);
 // console.log(topics);
 
 newButton = function() {
-	var b = $("<button>");
-	b.text($("#textToSearch").val().trim());
-	// $("#textToSearch").val().trim();
-	$("")
+
+	$("#textToSearch").val().trim();
+
+
+	for (var i = 0; i < currentTopic.length; i++) {
+
+		var b = $("<button>");
+		b.text($("#textToSearch").val().trim());
+		b.attr("alt", "clickable image of " + currentTopic[i]);
+		$(".images").append(currentTopic[i]);
+		
+	}
 
 }
 
-// newTopic = function() {
-// 	$("")
-// }
 
 
 
-
-
-
+console.log($.now());
