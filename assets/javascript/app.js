@@ -1,12 +1,10 @@
 $(document).ready(function() {
 	
-
 	// call new button function that also calls button drawing function
 	$("#button").on("click", function(){
 		event.preventDefault();
 		newButton();
 	})
-
 
 	$(".buttons").on("click", "button", function(){
 		getImages();
@@ -14,7 +12,6 @@ $(document).ready(function() {
 
 	// whenever the buttons are drawn, including new elements (not present at document load) they can be listened for to toggle
 	$(".images").on("click", "img", function(){
-		event.preventDefault();
 		animateToggle();
 	})
 
@@ -55,7 +52,7 @@ $(document).ready(function() {
 		}
 	}
 
-	// draw buttons when page loads
+	// draw stored buttons when page loads
 	drawButtons();
 
 	getImages = function() {
@@ -78,19 +75,33 @@ $(document).ready(function() {
 			console.log(response);
 
 			for (var j = 0; j < response.data.length; j++) {
+
+				// cycling through the results ang getting the image and text ready
 				var area = $("<div id='gif'>")
 				var image = $("<img>").attr("src", response.data[j].images.fixed_height_still.url);
+				image.attr("data", "fixed");
+				image.attr("data-fixed", response.data[j].images.fixed_height_still.url);
+				image.attr("data-animate", response.data[j].images.fixed_height.url);	
 				var ratingText = $("<p>").text("Rating: " + response.data[j].rating);
 
+				// writing the image and rating to the page
 				area.append(image);
 				area.append(ratingText);
 				$(".images").prepend(area);
 			}
 		})
-
-
 	}
 
+	animateToggle = function() {
 
-	console.log($.now());
+		// checking and changing the image from fixed to fluid and back
+		if ($(event.target).attr("data") === "fixed") {
+			$(event.target).attr("src", $(event.target).attr("data-animate"))
+			$(event.target).attr("data", "animate");
+		}else {
+			$(event.target).attr("src", $(event.target).attr("data-fixed"));
+			$(event.target).attr("data", "fixed");
+		}
+	}
+
 })
