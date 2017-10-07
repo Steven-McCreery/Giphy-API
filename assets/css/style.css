@@ -3,7 +3,42 @@
 }
 
 .tvShow {
-	margin: .5%;
+	margin: 2% .5% 0%;
 	color: black;
 	font-weight: bold;
+}
+
+body {
+	background-color: lightgrey;
+}
+
+#title {
+	background-color: orange;
+}
+
+#results {
+	background-color: gray;
+}
+
+.pull-right {
+	background-color: lightgray;
+	padding-top: 2%;
+	height: 100%;
+}
+
+.pull-left {
+	background-color: black;
+}
+
+h1 {
+	text-decoration: underline;
+}
+
+p {
+	color: white;
+	font-weight: bold;
+}
+
+img {
+	margin-top: 3%;
 }
